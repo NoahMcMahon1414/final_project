@@ -2,27 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lab 5 - ABCs of D3</title>
+    <title>Final Project - Weather Forecasting</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div id="main">
-        <svg width="300" height="600" style="border: 1px solid #777;">
-        </svg>
-        <div>
-            <label for="categorySelect">Show: </label>
-            <select class="custom-select" id="categorySelect" onchange="onCategoryChanged()">
-              <option selected value="all-letters">All Letters</option>
-              <option value="only-consonants">Only Consonants</option>
-              <option value="only-vowels">Only Vowels</option>
-            </select>
+        <div id="chart"></div>
+        <div style="white-space: nowrap;">
+            <div style="display: inline">
+                <label for="categorySelect"> Please Select City: </label>
+                <select class="custom-select" id="categorySelect" onchange="onCategoryChanged()">
+                    <option selected value="clt">Charlotte, North Carolina</option>
+                    <option value="cqt">Los Angeles, California</option>
+                    <option value="ind">Indianapolis, Indiana</option>
+                    <option value="jax">Jacksonville, Florida</option>
+                    <option value="mdw">Chicago, Illinois</option>
+                    <option value="phl">Philadelphia, Pennsylvania</option>
+                    <option value="phx">Phoenix, Arizona</option>
+                </select>
+            </div>
         </div>
-        <div id="slider-container"></div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
