@@ -1,16 +1,23 @@
 // Global function called when select element is changed
 function onCategoryChanged() {
     var select = d3.select('#categorySelect').node();
-    // Get current value of select element
     var category = select.options[select.selectedIndex].value;
-    // Update chart with the selected category of letters
-    updateChart(category);
+    var word = category;
+    word = word.toUpperCase();
+    var file = word + '.csv';
+    console.log(file);
 }
 
 var chartDiv = document.getElementById('chart');
 
 d3.csv('CLT.csv').then(function(dataset) {
     weather = dataset;
+
+    var weather_actual_mean_temp = [];
+    for (let i = 0; i < weather.length; i++)
+    {
+      weather_actual_mean_temp[i] = weather[i].actual_mean_temp;
+    }
 
     var weather_dates = [];
     for (let i = 0; i < weather.length; i++)
@@ -64,8 +71,18 @@ d3.csv('CLT.csv').then(function(dataset) {
         xaxis: 'x', 
         yaxis: 'y'
       };
+
+      var trace2 = {
+        x: weather_dates,
+        y: weather_actual_mean_temp,
+        line: {
+          color: 'rgb(0, 0, 0)',
+          width: 2
+        },
+        type: 'scatter'
+      }
       
-      var data = [trace1];
+      var data = [trace1, trace2];
       
       var layout = {
         dragmode: 'zoom', 
@@ -75,7 +92,7 @@ d3.csv('CLT.csv').then(function(dataset) {
           b: 40, 
           l: 60
         }, 
-        showlegend: false, 
+        showlegend: false,
         xaxis: {
           autorange: true, 
           domain: [0, 1], 
@@ -88,6 +105,7 @@ d3.csv('CLT.csv').then(function(dataset) {
           autorange: true, 
           domain: [0, 1], 
           range: [-20, 120],
+          title: 'Temperature (&deg;C)',
           type: 'linear'
         }
     };
